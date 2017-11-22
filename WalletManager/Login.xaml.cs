@@ -39,10 +39,14 @@ namespace WalletManager
             if ((int)userCount.Rows[0][0] != 0)
             {
                 // Load user page
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                this.Close();
             }
             else
             {
                 // Tell user that creedentials are incorect
+                MessageBox.Show("Email and password does not match!");          // TODO: Custom message window
             }
         }
 
@@ -55,7 +59,8 @@ namespace WalletManager
             // Check if registration was completed with success
             if ((bool)windowRegister.DialogResult)
             {
-                MessageBox.Show("Account created with success!");
+                // Tell user that account was created with success
+                MessageBox.Show("Account created with success!");               // TODO: Custom message window
             }
         }
     }
