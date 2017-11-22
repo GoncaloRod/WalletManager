@@ -1,0 +1,63 @@
+﻿<Window x:Class="WalletManager.Register"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:WalletManager"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStartupLocation="CenterScreen"
+        Title="Register" Height="400" Width="650">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="35*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="16*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Name Input -->
+        <Viewbox Grid.Column="1" Grid.Row="1" VerticalAlignment="Center">
+            <TextBox x:Name="txtName" materialDesign:HintAssist.Hint="Name" Width="180"/>
+        </Viewbox>
+        
+        <!-- Email Input -->
+        <Viewbox Grid.Column="1" Grid.Row="3" VerticalAlignment="Center">
+            <TextBox x:Name="txtEmail" materialDesign:HintAssist.Hint="Email" Width="180"/>
+        </Viewbox>
+
+        <!-- Password Input-->
+        <Viewbox Grid.Column="1" Grid.Row="5" VerticalAlignment="Center">
+            <PasswordBox x:Name="txtPassword" materialDesign:HintAssist.Hint="Password" Width="180"/>
+        </Viewbox>
+
+        <!-- Confirm Password Input -->
+        <Viewbox Grid.Column="1" Grid.Row="7" VerticalAlignment="Center">
+            <PasswordBox x:Name="txtPasswordConfirmation" materialDesign:HintAssist.Hint="Confirm Password" Width="180"/>
+        </Viewbox>
+
+        <!-- Register Button -->
+        <Viewbox Grid.Column="1" Grid.Row="9" VerticalAlignment="Center">
+            <Button x:Name="btnRegister" Content="Register" Width="190" Click="btnRegisterClick"/>
+        </Viewbox>
+    </Grid>
+</Window>
