@@ -17,47 +17,47 @@
         Title="Register" Height="400" Width="650">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="35*"/>
-            <ColumnDefinition Width="30*"/>
-            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="100*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="26*"/>
-            <RowDefinition Height="8*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="8*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="8*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="8*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="8*"/>
-            <RowDefinition Height="16*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="100*"/>
         </Grid.RowDefinitions>
         
         <!-- Name Input -->
         <Viewbox Grid.Column="1" Grid.Row="1" VerticalAlignment="Center">
-            <TextBox x:Name="txtName" materialDesign:HintAssist.Hint="Name" Width="180"/>
+            <TextBox x:Name="txtName" materialDesign:HintAssist.Hint="Name" Width="200"/>
         </Viewbox>
         
         <!-- Email Input -->
         <Viewbox Grid.Column="1" Grid.Row="3" VerticalAlignment="Center">
-            <TextBox x:Name="txtEmail" materialDesign:HintAssist.Hint="Email" Width="180"/>
+            <TextBox x:Name="txtEmail" materialDesign:HintAssist.Hint="Email" Width="200"/>
         </Viewbox>
 
         <!-- Password Input-->
         <Viewbox Grid.Column="1" Grid.Row="5" VerticalAlignment="Center">
-            <PasswordBox x:Name="txtPassword" materialDesign:HintAssist.Hint="Password" Width="180"/>
+            <PasswordBox x:Name="txtPassword" materialDesign:HintAssist.Hint="Password" Width="200"/>
         </Viewbox>
 
         <!-- Confirm Password Input -->
         <Viewbox Grid.Column="1" Grid.Row="7" VerticalAlignment="Center">
-            <PasswordBox x:Name="txtPasswordConfirmation" materialDesign:HintAssist.Hint="Confirm Password" Width="180"/>
+            <PasswordBox x:Name="txtPasswordConfirmation" materialDesign:HintAssist.Hint="Confirm Password" Width="200"/>
         </Viewbox>
 
         <!-- Register Button -->
         <Viewbox Grid.Column="1" Grid.Row="9" VerticalAlignment="Center">
-            <Button x:Name="btnRegister" Content="Register" Width="190" Click="btnRegisterClick"/>
+            <Button x:Name="btnRegister" Content="Register" Width="230" Click="btnRegisterClick"/>
         </Viewbox>
     </Grid>
 </Window>

@@ -9,5 +9,8 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("create_tables.sql")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/close-button.svg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/maximize-button.svg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/minimize-button.svg")]
 
 

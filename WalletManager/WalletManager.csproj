@@ -127,6 +127,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="create_tables.sql" />
+    <Content Include="Resources\close-button.svg" />
+    <Content Include="Resources\maximize-button.svg" />
+    <Content Include="Resources\minimize-button.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
