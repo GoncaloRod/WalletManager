@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Data.SqlClient;
 using System.Data;
+using System.IO;
 
 namespace WalletManager
 {
@@ -11,12 +12,16 @@ namespace WalletManager
         public Login()
         {
             InitializeComponent();
+            // CHeck if DB path is created
+            if (!Directory.Exists($@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\WalletManager")) Directory.CreateDirectory($@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\WalletManager");
+            // Check if DB is created
+            if (!File.Exists($@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\WalletManager\WalletManager.mdf")) DB.Instance.CreateFromFile($@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\WalletManager\WalletManager.mdf", @".\..\..\create_tables.sql");
         }
 
         private void btnLoginClick(object sender, RoutedEventArgs e)
         {
             // Set up variables for to execute SQL command
-            string email    = txtEmail.Text;
+            string email = txtEmail.Text;
             string password = txtPassword.Password;
 
             // Validate form
@@ -35,11 +40,27 @@ namespace WalletManager
             // Execute SQL command
             DataTable userCount = DB.Instance.ExecQuery(sql, parameters);
 
+            // Clear variables
+            sql = null;
+            parameters = null;
+
             // Check if login was made successfully
             if ((int)userCount.Rows[0][0] != 0)
             {
+                // Get user from DB
+                // SQL command with paramenters
+                sql = "SELECT * From Users WHERE email = @email";
+
+                // Parameters for SQL command
+                parameters = new List<SqlParameter>
+                {
+                    new SqlParameter(){ ParameterName = "@email", SqlDbType = SqlDbType.VarChar, Value = email },
+                };
+
+                DataTable user = DB.Instance.ExecQuery(sql, parameters);
+
                 // Load user page
-                MainWindow mainWindow = new MainWindow();
+                MainWindow mainWindow = new MainWindow(user);
                 mainWindow.Show();
                 this.Close();
             }
