@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace WalletManager
 {
     /// <summary>
-    /// Interaction logic for Message.xaml
+    /// Interaction logic for AddWallet.xaml
     /// </summary>
-    public partial class Message : Window
+    public partial class AddWallet : Window
     {
-        public Message()
+        public AddWallet()
         {
             InitializeComponent();
         }

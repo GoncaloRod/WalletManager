@@ -23,17 +23,23 @@ namespace WalletManager
 
         private void lnkAccountsClick(object sender, RoutedEventArgs e)
         {
-
+            // Load add wallets window
+            AddWallet addWallet = new AddWallet();
+            addWallet.ShowDialog();
         }
 
         private void lnkExpensesClick(object sender, RoutedEventArgs e)
         {
-
+            // Load add expenses window
+            AddExpenses addExpenses = new AddExpenses();
+            addExpenses.ShowDialog();
         }
 
         private void lnkSalariesClick(object sender, RoutedEventArgs e)
         {
-
+            // Load add salaries window
+            AddSalaries addSalaries = new AddSalaries();
+            addSalaries.ShowDialog();
         }
     }
 }
