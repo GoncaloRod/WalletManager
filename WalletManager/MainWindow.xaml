@@ -3,10 +3,42 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:WalletManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000">
-    <Grid>
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="500" Width="900">
+    <Grid Margin="15,15,15,15">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="90*"/>
+        </Grid.RowDefinitions>
+
+        <!-- User's name -->
+        <TextBlock x:Name="tbName" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" VerticalAlignment="Center" Style="{StaticResource MaterialDesignDisplay2TextBlock}" Text="Name"/>
+        <!-- User's total balance -->
+        <TextBlock x:Name="tbBalance" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" VerticalAlignment="Bottom" Style="{StaticResource MaterialDesignBody1TextBlock}">Total Balance: </TextBlock>
         
+        <!-- User's statistics -->
+        
+        <!-- New Button -->
+        <Button x:Name="btnAdd" Grid.Column="4" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="Add expenses, salaries and categories" Click="btnAddClick">
+            <materialDesign:PackIcon Width="24" Height="24" Kind="Plus"/>
+        </Button>
     </Grid>
 </Window>

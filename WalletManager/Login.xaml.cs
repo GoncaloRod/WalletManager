@@ -12,10 +12,12 @@ namespace WalletManager
         public Login()
         {
             InitializeComponent();
+            /* NOT WORKING!!!
             // CHeck if DB path is created
             if (!Directory.Exists($@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\WalletManager")) Directory.CreateDirectory($@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\WalletManager");
             // Check if DB is created
             if (!File.Exists($@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\WalletManager\WalletManager.mdf")) DB.Instance.CreateFromFile($@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\WalletManager\WalletManager.mdf", @".\..\..\create_tables.sql");
+            */
         }
 
         private void btnLoginClick(object sender, RoutedEventArgs e)
@@ -26,41 +28,11 @@ namespace WalletManager
 
             // Validate form
             // Do things
-            
-            // SQL command with parameters
-            string sql = "SELECT COUNT(*) FROM Users WHERE email = @email AND password = @password";
-           
-            // Parameters for SQL command
-            List<SqlParameter> parameters = new List<SqlParameter>
+
+            if (Session.Instance.Attempt(email, password))
             {
-                new SqlParameter(){ ParameterName = "@email", SqlDbType = SqlDbType.VarChar, Value = email },
-                new SqlParameter(){ ParameterName = "@password", SqlDbType = SqlDbType.VarChar, Value = password }
-            };
-
-            // Execute SQL command
-            DataTable userCount = DB.Instance.ExecQuery(sql, parameters);
-
-            // Clear variables
-            sql = null;
-            parameters = null;
-
-            // Check if login was made successfully
-            if ((int)userCount.Rows[0][0] != 0)
-            {
-                // Get user from DB
-                // SQL command with paramenters
-                sql = "SELECT * From Users WHERE email = @email";
-
-                // Parameters for SQL command
-                parameters = new List<SqlParameter>
-                {
-                    new SqlParameter(){ ParameterName = "@email", SqlDbType = SqlDbType.VarChar, Value = email },
-                };
-
-                DataTable user = DB.Instance.ExecQuery(sql, parameters);
-
-                // Load user page
-                MainWindow mainWindow = new MainWindow(user);
+                // Load user window
+                MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 this.Close();
             }

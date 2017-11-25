@@ -26,7 +26,7 @@ namespace WalletManager
 
         public DB()
         {
-            /* For creating DB dynamically
+            /* For creating DB dynamically      NOT WORKING!!!
             strConnect = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\WalletManager\WalletManager.mdf;Integrated Security=True;Connect Timeout=30";
             dbConnection = new SqlConnection(strConnect);
             dbConnection.Open();

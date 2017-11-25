@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,22 +14,26 @@ using System.Windows.Shapes;
 
 namespace WalletManager
 {
-    public partial class MainWindow : Window
+    public partial class AddMenu : Window
     {
-        public MainWindow()
+        public AddMenu()
         {
-            // Initialize vizual elements
             InitializeComponent();
-
-            // Populate vizual elements
-            tbName.Text = Session.Instance.GetUser().name;
         }
 
-        private void btnAddClick(object sender, RoutedEventArgs e)
+        private void lnkAccountsClick(object sender, RoutedEventArgs e)
         {
-            // Load add menu window
-            AddMenu addMenu = new AddMenu();
-            addMenu.ShowDialog();
+
+        }
+
+        private void lnkExpensesClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void lnkSalariesClick(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

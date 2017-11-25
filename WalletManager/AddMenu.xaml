@@ -1,0 +1,36 @@
+﻿<Window x:Class="WalletManager.AddMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:WalletManager"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStartupLocation="CenterScreen"
+        Height="250" Width="500">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="30*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!-- Accounts -->
+        <TextBlock  Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"><Hyperlink Style="{StaticResource MaterialDesignTitleHyperlink}" Click="lnkAccountsClick">Accounts</Hyperlink></TextBlock>
+
+        <!-- Expenses -->
+        <TextBlock  Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"><Hyperlink Style="{StaticResource MaterialDesignTitleHyperlink}" Click="lnkExpensesClick">Expenses</Hyperlink></TextBlock>
+        
+        <!-- Salaries -->
+        <TextBlock  Grid.Column="4" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"><Hyperlink Style="{StaticResource MaterialDesignTitleHyperlink}" Click="lnkSalariesClick">Salaries</Hyperlink></TextBlock>
+    </Grid>
+</Window>

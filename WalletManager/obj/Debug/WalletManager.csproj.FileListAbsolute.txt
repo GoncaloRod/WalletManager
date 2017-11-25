@@ -69,3 +69,5 @@ C:\Users\Goncalo Rodrigues\Documents\Visual Studio 2017\Projects\WalletManager\W
 C:\Users\Goncalo Rodrigues\Documents\Visual Studio 2017\Projects\WalletManager\WalletManager\obj\Debug\WalletManager.exe
 C:\Users\Goncalo Rodrigues\Documents\Visual Studio 2017\Projects\WalletManager\WalletManager\obj\Debug\WalletManager.pdb
 C:\Users\Goncalo Rodrigues\Documents\Visual Studio 2017\Projects\WalletManager\WalletManager\obj\Debug\WalletManager_Content.g.cs
+C:\Users\Goncalo Rodrigues\Documents\Visual Studio 2017\Projects\WalletManager\WalletManager\obj\Debug\AddMenu.g.cs
+C:\Users\Goncalo Rodrigues\Documents\Visual Studio 2017\Projects\WalletManager\WalletManager\obj\Debug\AddMenu.baml
