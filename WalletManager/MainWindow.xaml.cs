@@ -24,6 +24,7 @@ namespace WalletManager
 
             // Populate vizual elements
             tbName.Text = Session.Instance.GetUser().name;
+            tbBalance.Text = $"Total Balance: {Session.Instance.GetUser().TotalBalance():F2} {Session.Instance.GetUser().GetUserCurrencySymbol()}";
         }
 
         private void btnAddClick(object sender, RoutedEventArgs e)

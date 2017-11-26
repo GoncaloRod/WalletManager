@@ -22,13 +22,14 @@ namespace WalletManager
 
         private void btnLoginClick(object sender, RoutedEventArgs e)
         {
-            // Set up variables for to execute SQL command
+            // Variables to login
             string email = txtEmail.Text;
             string password = txtPassword.Password;
 
             // Validate form
             // Do things
 
+            // Attempt to login
             if (Session.Instance.Attempt(email, password))
             {
                 // Load user window

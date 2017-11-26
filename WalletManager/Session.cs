@@ -41,7 +41,7 @@ namespace WalletManager
 
             if (userDB.Rows.Count != 0)
             {
-                user = new User((int)userDB.Rows[0][0], (string)userDB.Rows[0][1], (string)userDB.Rows[0][2], (string)userDB.Rows[0][3], (decimal)userDB.Rows[0][4]);
+                user = new User((int)userDB.Rows[0][0], (string)userDB.Rows[0][1], (string)userDB.Rows[0][2], (string)userDB.Rows[0][3], (int)userDB.Rows[0][4]);
 
                 return true;
             }

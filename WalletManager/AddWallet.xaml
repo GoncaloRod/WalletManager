@@ -14,8 +14,30 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStartupLocation="CenterScreen"
-        Title="Add Wallet" Height="300" Width="300">
+        Title="Add Wallet" Height="200" Width="200">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         
+        <!-- Wallet Name -->
+        <TextBox x:Name="txtWalletName" Grid.Column="1" Grid.Row="1" materialDesign:HintAssist.Hint="Wallet Name"/>
+        
+        <!-- Wallet Start Balance -->
+        <TextBox x:Name="txtStartingBalance" Grid.Column="1" Grid.Row="3" materialDesign:HintAssist.Hint="Strating Balence" PreviewTextInput="startingBalancePreviewTextInput"/>
+        
+        <!-- Add Button -->
+        <Button x:Name="btnAdd" Grid.Column="1" Grid.Row="5" Content="Add" Click="btnAddClick"/>
     </Grid>
 </Window>

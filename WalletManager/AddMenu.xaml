@@ -25,7 +25,7 @@
         </Grid.ColumnDefinitions>
         
         <!-- Accounts -->
-        <TextBlock  Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"><Hyperlink Style="{StaticResource MaterialDesignTitleHyperlink}" Click="lnkAccountsClick">Accounts</Hyperlink></TextBlock>
+        <TextBlock  Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"><Hyperlink Style="{StaticResource MaterialDesignTitleHyperlink}" Click="lnkWalletsClick">Wallets</Hyperlink></TextBlock>
 
         <!-- Expenses -->
         <TextBlock  Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"><Hyperlink Style="{StaticResource MaterialDesignTitleHyperlink}" Click="lnkExpensesClick">Expenses</Hyperlink></TextBlock>

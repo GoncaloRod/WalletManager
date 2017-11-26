@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,14 +15,39 @@ using System.Windows.Shapes;
 
 namespace WalletManager
 {
-    /// <summary>
-    /// Interaction logic for AddWallet.xaml
-    /// </summary>
     public partial class AddWallet : Window
     {
         public AddWallet()
         {
             InitializeComponent();
+        }
+
+        private void startingBalancePreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextAllowed(e.Text);
+        }
+
+        private void btnAddClick(object sender, RoutedEventArgs e)
+        {
+            // Variables to send to class
+            string name = txtWalletName.Text;
+            decimal balance = Convert.ToDecimal(txtStartingBalance.Text);
+
+            // Validate form
+            // Do thighs
+
+            // Create wallet in user's account
+            Session.Instance.GetUser().AddWallet(name, balance);
+
+            // Close window
+            DialogResult = true;
+            Close();
+        }
+
+        private static bool IsTextAllowed(string text)
+        {
+            Regex regex = new Regex("[^0-9.-]+");
+            return !regex.IsMatch(text);
         }
     }
 }

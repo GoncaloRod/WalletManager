@@ -21,11 +21,17 @@ namespace WalletManager
             InitializeComponent();
         }
 
-        private void lnkAccountsClick(object sender, RoutedEventArgs e)
+        private void lnkWalletsClick(object sender, RoutedEventArgs e)
         {
             // Load add wallets window
             AddWallet addWallet = new AddWallet();
             addWallet.ShowDialog();
+
+            // Check if operation was completed with success
+            if ((bool)addWallet.DialogResult)
+            {
+                MessageBox.Show("Wallet added with success!");
+            }
         }
 
         private void lnkExpensesClick(object sender, RoutedEventArgs e)
@@ -33,6 +39,12 @@ namespace WalletManager
             // Load add expenses window
             AddExpenses addExpenses = new AddExpenses();
             addExpenses.ShowDialog();
+
+            // Check if operation was completed with success
+            if ((bool)addExpenses.DialogResult)
+            {
+                MessageBox.Show("Expense added with success!");
+            }
         }
 
         private void lnkSalariesClick(object sender, RoutedEventArgs e)
@@ -40,6 +52,12 @@ namespace WalletManager
             // Load add salaries window
             AddSalaries addSalaries = new AddSalaries();
             addSalaries.ShowDialog();
+
+            // Check if operation was completed with success
+            if ((bool)addSalaries.DialogResult)
+            {
+                MessageBox.Show("Salary added with success!");
+            }
         }
     }
 }

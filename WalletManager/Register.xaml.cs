@@ -49,15 +49,14 @@ namespace WalletManager
 
             // Insert user to DB
             // SQL command with parameters
-            sql = "INSERT INTO Users(name, email, password, balance) VALUES(@name, @email, @password, @balance)";
+            sql = "INSERT INTO Users(name, email, password) VALUES(@name, @email, @password)";
 
             // Parameters for SQL command
             parameters = new List<SqlParameter>
             {
                 new SqlParameter() {ParameterName = "@name", SqlDbType = SqlDbType.VarChar, Value = name },
                 new SqlParameter() {ParameterName = "@email", SqlDbType = SqlDbType.VarChar, Value = email },
-                new SqlParameter() {ParameterName = "@password", SqlDbType = SqlDbType.VarChar, Value = password },
-                new SqlParameter() {ParameterName = "@balance", SqlDbType = SqlDbType.Money, Value = 0 }
+                new SqlParameter() {ParameterName = "@password", SqlDbType = SqlDbType.VarChar, Value = password }
             };
 
             // Execute SQL command
