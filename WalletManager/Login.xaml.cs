@@ -12,6 +12,7 @@ namespace WalletManager
         public Login()
         {
             InitializeComponent();
+            UpdateForm();
             /* NOT WORKING!!!
             // CHeck if DB path is created
             if (!Directory.Exists($@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\WalletManager")) Directory.CreateDirectory($@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\WalletManager");
@@ -22,12 +23,12 @@ namespace WalletManager
 
         private void btnLoginClick(object sender, RoutedEventArgs e)
         {
-            // Variables to login
-            string email = txtEmail.Text;
-            string password = txtPassword.Password;
-
             // Validate form
-            // Do things
+            var i = cmbUser.SelectedIndex;
+
+            // Variables to login
+            string email = ((User)(cmbUser.SelectedItem)).email;
+            string password = txtPassword.Password;
 
             // Attempt to login
             if (Session.Instance.Attempt(email, password))
@@ -55,6 +56,15 @@ namespace WalletManager
             {
                 // Tell user that account was created with success
                 MessageBox.Show("Account created with success!");               // TODO: Custom message window
+            }
+        }
+
+        public void UpdateForm()
+        {
+            // Update account's Combo Box
+            foreach (var item in User.All())
+            {
+                cmbUser.Items.Add(item);
             }
         }
     }
