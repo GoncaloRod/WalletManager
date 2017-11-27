@@ -9,7 +9,7 @@ CREATE TABLE Currencies (
 CREATE TABLE Users (
 	[id] INT IDENTITY(1,1),
 	[name] VARCHAR(100) NOT NULL,
-	[email] VARCHAR(100) UNIQUE CHECK([email] LIKE '%@%.%') NOT NULL,
+	[email] VARCHAR(100) UNIQUE CHECK([email] LIKE '%@%') NOT NULL,
 	[password] VARCHAR(100) NOT NULL,
 	[currency_id] INT REFERENCES Currencies(id) NOT NULL, 
 	PRIMARY KEY([id])

@@ -24,7 +24,11 @@ namespace WalletManager
         private void btnLoginClick(object sender, RoutedEventArgs e)
         {
             // Validate form
-            var i = cmbUser.SelectedIndex;
+            if (cmbUser.SelectedIndex < 0 || txtPassword.Password == "")
+            {
+                MessageBox.Show("Both fields cannot be empty!");
+                return;
+            }
 
             // Variables to login
             string email = ((User)(cmbUser.SelectedItem)).email;
@@ -41,7 +45,7 @@ namespace WalletManager
             else
             {
                 // Tell user that creedentials are incorect
-                MessageBox.Show("Email and password does not match!");          // TODO: Custom message window
+                MessageBox.Show("Email and password does not match!");
             }
         }
 
@@ -55,13 +59,15 @@ namespace WalletManager
             if ((bool)windowRegister.DialogResult)
             {
                 // Tell user that account was created with success
-                MessageBox.Show("Account created with success!");               // TODO: Custom message window
+                MessageBox.Show("Account created with success!");
+                // Update forms
+                UpdateForm();
             }
         }
 
         public void UpdateForm()
         {
-            // Update account's Combo Box
+            // Update accounts Combo Box
             foreach (var item in User.All())
             {
                 cmbUser.Items.Add(item);

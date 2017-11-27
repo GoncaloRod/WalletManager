@@ -28,6 +28,51 @@ namespace WalletManager
 
             return users;
         }
+
+        /// <summary>
+        /// Creates new user in DB.
+        /// </summary>
+        /// <param name="_name">New user's name</param>
+        /// <param name="_email">New user's email</param>
+        /// <param name="_password">New user's password</param>
+        /// <param name="_currency_id">New user's curreny id</param>
+        /// <returns></returns>
+        public static bool Create(string _name, string _email, string _password, int _currency_id)
+        {
+            // Check if email exists
+            // Sql command
+            string sql = "SELECT COUNT(*) FROM Users WHERE email = @email";
+
+            // Parameters for Sql command
+            List<SqlParameter> parameters = new List<SqlParameter>
+            {
+                new SqlParameter() { ParameterName = "@email", SqlDbType = SqlDbType.VarChar, Value = _email }
+            };
+
+            // Validate email
+            if ((int)DB.Instance.ExecQuery(sql, parameters).Rows[0][0] > 0)
+            {
+                return false;
+            }
+
+            // Insert user in DB
+            // Sql Command
+            sql = "INSERT INTO Users(name, email, password, currency_id) VALUES(@name, @email, @password, @currency_id)";
+
+            // Parameters for Sql Command
+            parameters = new List<SqlParameter>
+            {
+                new SqlParameter() {ParameterName = "@name", SqlDbType = SqlDbType.VarChar, Value = _name },
+                new SqlParameter() {ParameterName = "@email", SqlDbType = SqlDbType.VarChar, Value = _email },
+                new SqlParameter() {ParameterName = "@password", SqlDbType = SqlDbType.VarChar, Value = _password },
+                new SqlParameter() {ParameterName = "@currency_id", SqlDbType = SqlDbType.Int, Value = _currency_id }
+            };
+
+            // Execute command in DB
+            DB.Instance.ExecSQL(sql, parameters);
+
+            return true;
+        }
         #endregion
 
         #region Instance Methods
@@ -97,6 +142,7 @@ namespace WalletManager
         {
             return DB.Instance.ExecQuery($"SELECT symbol FROM Currencies WHERE id = {currency_id}").Rows[0][0].ToString();
         }
+        #endregion
 
         /// <summary>
         /// Return user's email.
@@ -106,6 +152,5 @@ namespace WalletManager
         {
             return email;
         }
-        #endregion
     }
 }

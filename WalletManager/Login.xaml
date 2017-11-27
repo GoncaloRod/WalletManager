@@ -35,13 +35,13 @@
         <!-- Email Input -->
         <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
             <materialDesign:PackIcon Kind="Account" Foreground="{Binding ElementName=cmbUser, Path=BorderBrush}" Height="30" Width="20"/>
-            <ComboBox x:Name="cmbUser" IsEditable="False" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Width="175" Margin="5,0,0,0"/>
+            <ComboBox x:Name="cmbUser" materialDesign:HintAssist.Hint="Account" Width="175" Margin="5,0,0,0"/>
         </StackPanel>
         
         <!-- Password Input -->
         <StackPanel Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal">
             <materialDesign:PackIcon Kind="Key" Foreground="{Binding ElementName=txtPassword, Path=BorderBrush}" Height="30" Width="20"/>
-            <PasswordBox x:Name="txtPassword" Width="175" Margin="5,0,0,0"/>
+            <PasswordBox x:Name="txtPassword" materialDesign:HintAssist.Hint="Password" Width="175" Margin="5,0,0,0"/>
         </StackPanel>
 
         <!-- Login Button -->
