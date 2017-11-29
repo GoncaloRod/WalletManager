@@ -65,8 +65,11 @@ namespace WalletManager
             }
         }
 
-        public void UpdateForm()
+        private void UpdateForm()
         {
+            // Clear Combo Boxes
+            cmbUser.Items.Clear();
+
             // Update accounts Combo Box
             foreach (var item in User.All())
             {

@@ -1,0 +1,49 @@
+﻿<Window x:Class="WalletManager.ChangeName"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:WalletManager"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStartupLocation="CenterScreen"
+        Title="ChangeName" Height="200" Width="275">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="225"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- New name -->
+        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+            <materialDesign:PackIcon Kind="Account" Foreground="{Binding ElementName=txtNewName, Path=BorderBrush}" Height="30" Width="20"/>
+            <TextBox x:Name="txtNewName" materialDesign:HintAssist.Hint="New Name" Width="200" Margin="5,0,5,0"/>
+        </StackPanel>
+        
+        <!-- Password -->
+        <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal">
+            <materialDesign:PackIcon Kind="Key" Foreground="{Binding ElementName=txtPassword, Path=BorderBrush}" Height="30" Width="20"/>
+            <PasswordBox x:Name="txtPassword" materialDesign:HintAssist.Hint="Password" Width="200" Margin="5,0,5,0"/>
+        </StackPanel>
+        
+        <!-- Change name button -->
+        <Button x:Name="btnChangeName" Grid.Column="1" Grid.Row="5" Content="Change" Click="btnChangeNameClick"/>
+    </Grid>
+</Window>

@@ -29,12 +29,16 @@ namespace WalletManager
 
         private void btnAddClick(object sender, RoutedEventArgs e)
         {
+            // Validate form
+            if (txtWalletName.Text == "" || txtStartingBalance.Text == "")
+            {
+                MessageBox.Show("Both fields cannot be empty!");
+                return;
+            }
+
             // Variables to send to class
             string name = txtWalletName.Text;
             decimal balance = Convert.ToDecimal(txtStartingBalance.Text);
-
-            // Validate form
-            // Do thighs
 
             // Create wallet in user's account
             Session.Instance.GetUser().AddWallet(name, balance);

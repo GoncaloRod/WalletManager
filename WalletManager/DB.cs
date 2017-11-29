@@ -112,10 +112,35 @@ namespace WalletManager
             return registry;
         }
 
+        public DataTable ExecQuery(string query, SqlTransaction transaction)
+        {
+            SqlCommand command = new SqlCommand(query, dbConnection);
+            command.Transaction = transaction;
+            DataTable registry = new DataTable();
+            SqlDataReader data = command.ExecuteReader();
+            registry.Load(data);
+            data = null;
+            command.Dispose();
+            return registry;
+        }
+
         public DataTable ExecQuery(string query, List<SqlParameter> parameters)
         {
             SqlCommand command = new SqlCommand(query, dbConnection);
             command.Parameters.AddRange(parameters.ToArray());
+            DataTable registry = new DataTable();
+            SqlDataReader data = command.ExecuteReader();
+            registry.Load(data);
+            data = null;
+            command.Dispose();
+            return registry;
+        }
+
+        public DataTable ExecQuery(string query, List<SqlParameter> parameters, SqlTransaction transaction)
+        {
+            SqlCommand command = new SqlCommand(query, dbConnection);
+            command.Parameters.AddRange(parameters.ToArray());
+            command.Transaction = transaction;
             DataTable registry = new DataTable();
             SqlDataReader data = command.ExecuteReader();
             registry.Load(data);

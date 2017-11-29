@@ -39,19 +39,38 @@
         </Grid.RowDefinitions>
         
         <!-- Name Input -->
-        <TextBox x:Name="txtName" Grid.Column="1" Grid.Row="1" materialDesign:HintAssist.Hint="Name"/>
+        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+            <materialDesign:PackIcon Kind="Account" Foreground="{Binding ElementName=txtName, Path=BorderBrush}" Height="30" Width="20"/>
+            <TextBox x:Name="txtName" materialDesign:HintAssist.Hint="Name" Width="175" Margin="5,0,0,0"/>
+        </StackPanel>
+        
 
         <!-- Email Input -->
-        <TextBox x:Name="txtEmail" Grid.Column="1" Grid.Row="3" materialDesign:HintAssist.Hint="Email"/>
+        <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal">
+            <materialDesign:PackIcon Kind="At" Foreground="{Binding ElementName=txtEmail, Path=BorderBrush}" Height="30" Width="20"/>
+            <TextBox x:Name="txtEmail" materialDesign:HintAssist.Hint="Email" Width="175" Margin="5,0,0,0"/>
+        </StackPanel>
 
         <!-- Password Input-->
-        <PasswordBox x:Name="txtPassword" Grid.Column="1" Grid.Row="5" materialDesign:HintAssist.Hint="Password"/>
+        <StackPanel Grid.Column="1" Grid.Row="5" Orientation="Horizontal">
+            <materialDesign:PackIcon Kind="Key" Foreground="{Binding ElementName=txtPassword, Path=BorderBrush}" Height="30" Width="20"/>
+            <PasswordBox x:Name="txtPassword" materialDesign:HintAssist.Hint="Password" Width="175" Margin="5,0,0,0"/>
+        </StackPanel>
+        
 
         <!-- Confirm Password Input -->
-        <PasswordBox x:Name="txtPasswordConfirmation" Grid.Column="1" Grid.Row="7" materialDesign:HintAssist.Hint="Confirm Password"/>
+        <StackPanel Grid.Column="1" Grid.Row="7" Orientation="Horizontal">
+            <materialDesign:PackIcon Kind="Key" Foreground="{Binding ElementName=txtPasswordConfirmation, Path=BorderBrush}" Height="30" Width="20"/>
+            <PasswordBox x:Name="txtPasswordConfirmation" materialDesign:HintAssist.Hint="Confirm Password" Width="175" Margin="5,0,0,0"/>
+        </StackPanel>
+        
         
         <!-- Currency Input -->
-        <ComboBox x:Name="cmbCurrency" Grid.Column="1" Grid.Row="9" materialDesign:HintAssist.Hint="Currency"/>
+        <StackPanel Grid.Column="1" Grid.Row="9" Orientation="Horizontal">
+            <materialDesign:PackIcon Kind="CurrencyUsd" Foreground="{Binding ElementName=cmbCurrency, Path=BorderBrush}" Height="30" Width="20"/>
+            <ComboBox x:Name="cmbCurrency" materialDesign:HintAssist.Hint="Currency" Width="175" Margin="5,0,0,0"/>
+        </StackPanel>
+        
 
         <!-- Register Button -->
         <Button x:Name="btnRegister" Grid.Column="1" Grid.Row="11" Content="Register" Click="btnRegisterClick"/>

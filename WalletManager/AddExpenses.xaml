@@ -14,8 +14,58 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStartupLocation="CenterScreen"
-        Title="Add Expense" Height="300" Width="300">
+        Title="Add Expense" Height="300" Width="350">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         
+        <!-- Value -->
+        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+            <materialDesign:PackIcon Kind="CurrencyUsd" Foreground="{Binding ElementName=txtValue, Path=BorderBrush}" Height="30" Width="20"/>
+            <TextBox x:Name="txtValue" materialDesign:HintAssist.Hint="Value" Width="225" Margin="5,0,0,0" PreviewTextInput="valuePreviewTextInput"/>
+        </StackPanel>
+        
+        <!-- Date -->
+        <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal">
+            <materialDesign:PackIcon Kind="Calendar" Foreground="{Binding ElementName=txtValue, Path=BorderBrush}" Height="30" Width="20"/>
+            <DatePicker x:Name="dtpDate" materialDesign:HintAssist.Hint="Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Width="225" Margin="5,0,0,0"/>
+        </StackPanel>
+
+        <!-- Wallet -->
+        <StackPanel Grid.Column="1" Grid.Row="5" Orientation="Horizontal">
+            <materialDesign:PackIcon Kind="Wallet" Foreground="{Binding ElementName=cmbWallet, Path=BorderBrush}" Height="30" Width="20"/>
+            <ComboBox x:Name="cmbWallet" materialDesign:HintAssist.Hint="Wallet" Width="200" Margin="5,0,5,0"/>
+            <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="Add new wallet." Height="20" Width="20" Click="newWalletClick">
+                <materialDesign:PackIcon Width="12" Height="12" Kind="Plus"/>
+            </Button>
+        </StackPanel>
+
+        <!-- Category -->
+        <StackPanel Grid.Column="1" Grid.Row="7" Orientation="Horizontal">
+            <materialDesign:PackIcon Kind="FormatListBulleted" Foreground="{Binding ElementName=cmbCategory, Path=BorderBrush}" Height="30" Width="20"/>
+            <ComboBox x:Name="cmbCategory" materialDesign:HintAssist.Hint="Category" Width="200" Margin="5,0,5,0"/>
+            <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="Add new category." Height="20" Width="20" Click="newCategoryClick">
+                <materialDesign:PackIcon Width="12" Height="12" Kind="Plus"/>
+            </Button>
+        </StackPanel>
+        
+        <!-- Add Button -->
+        <Button x:Name="btnAdd" Grid.Column="1" Grid.Row="9" Content="Add" Click="btnAddClick"/>
     </Grid>
 </Window>

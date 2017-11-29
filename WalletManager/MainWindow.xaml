@@ -14,7 +14,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStartupLocation="CenterScreen"
-        Title="Welcome" Height="500" Width="900">
+        Title="Welcome to Wallet Manager" Height="500" Width="900">
     <Grid Margin="15,15,15,15">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="35*"/>
@@ -28,9 +28,18 @@
             <RowDefinition Height="10*"/>
             <RowDefinition Height="90*"/>
         </Grid.RowDefinitions>
+        
+        <!-- Options Popup Box -->
+        <materialDesign:PopupBox Grid.Column="4" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+            <StackPanel>
+                <Button x:Name="btnAccount" Click="btnAccountClick">Account</Button>
+                <Separator/>
+                <Button x:Name="btnLogOut" Click="btnLogOutClick">Log Out</Button>
+            </StackPanel>
+        </materialDesign:PopupBox>
 
         <!-- User's name -->
-        <TextBlock x:Name="tbName" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" VerticalAlignment="Center" Style="{StaticResource MaterialDesignDisplay2TextBlock}" Text="Name"/>
+        <TextBlock x:Name="tbName" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" VerticalAlignment="Center" Style="{StaticResource MaterialDesignDisplay2TextBlock}" Text="Name"/>
         <!-- User's total balance -->
         <TextBlock x:Name="tbBalance" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" VerticalAlignment="Bottom" Style="{StaticResource MaterialDesignBody1TextBlock}">Total Balance: </TextBlock>
         

@@ -25,7 +25,7 @@ CREATE TABLE Wallets (
 
 CREATE TABLE Transactions (
 	[id] INT IDENTITY(1,1),
-	[values] MONEY NOT NULL,
+	[value] MONEY NOT NULL,
 	[date] DATE NOT NULL,
 	[wallet_id] INT REFERENCES Wallets(id) NOT NULL,
 	PRIMARY KEY([id])
@@ -34,7 +34,6 @@ CREATE TABLE Transactions (
 CREATE TABLE Salaries_Categories (
 	[id] INT IDENTITY(1,1),
 	[name] VARCHAR(100) NOT NULL,
-	[color_code] CHAR(7) CHECK([color_code] LIKE '#%') NOT NULL,
 	[user_id] INT REFERENCES Users(id) NOT NULL,
 	PRIMARY KEY([id])
 )
@@ -42,7 +41,6 @@ CREATE TABLE Salaries_Categories (
 CREATE TABLE Expenses_Categories (
 	[id] INT IDENTITY(1,1),
 	[name] VARCHAR(100) NOT NULL,
-	[color_code] CHAR(7) CHECK([color_code] LIKE '#%') NOT NULL,
 	[user_id] INT REFERENCES Users(id) NOT NULL,
 	PRIMARY KEY([id])
 )
@@ -62,6 +60,10 @@ CREATE TABLE Expenses (
 )
 
 /* Populate some tables */
+INSERT INTO Currencies([code], [symbol]) VALUES('USD', '$')
+
 INSERT INTO Currencies([code], [symbol]) VALUES('EUR', '€')
+
+INSERT INTO Currencies([code], [symbol]) VALUES('BTC', '₿')
 
 INSERT INTO Users([name], [email], [password], [currency_id]) VALUES('Goncalo Rodrigues', 'me@me.me', '123', 1)

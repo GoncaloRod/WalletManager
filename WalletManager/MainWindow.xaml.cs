@@ -22,9 +22,31 @@ namespace WalletManager
             // Initialize vizual elements
             InitializeComponent();
 
-            // Populate vizual elements
-            tbName.Text = Session.Instance.GetUser().name;
-            tbBalance.Text = $"Total Balance: {Session.Instance.GetUser().TotalBalance():F2} {Session.Instance.GetUser().GetUserCurrencySymbol()}";
+            // Update Form
+            UpdateForm();
+        }
+
+        private void btnLogOutClick(object sender, RoutedEventArgs e)
+        {
+            // Log out from sessiom
+            Session.Instance.LogOut();
+
+            // Show Log In window
+            Login login = new Login();
+            login.Show();
+
+            // Close this window
+            Close();
+        }
+
+        private void btnAccountClick(object sender, RoutedEventArgs e)
+        {
+            // Load account window
+            Account account = new Account();
+            account.ShowDialog();
+
+            // Update Form
+            UpdateForm();
         }
 
         private void btnAddClick(object sender, RoutedEventArgs e)
@@ -32,6 +54,15 @@ namespace WalletManager
             // Load add menu window
             AddMenu addMenu = new AddMenu();
             addMenu.ShowDialog();
+
+            // Update Form
+            UpdateForm();
+        }
+
+        private void UpdateForm()
+        {
+            tbName.Text = Session.Instance.GetUser().name;
+            tbBalance.Text = $"Total Balance: {Session.Instance.GetUser().TotalBalance():F2} {Session.Instance.GetUser().GetUserCurrencySymbol()}";
         }
     }
 }

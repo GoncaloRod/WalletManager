@@ -75,3 +75,11 @@ C:\Users\Goncalo Rodrigues\Documents\Visual Studio 2017\Projects\WalletManager\W
 C:\Users\Goncalo Rodrigues\Documents\Visual Studio 2017\Projects\WalletManager\WalletManager\obj\Debug\AddExpenses.baml
 C:\Users\Goncalo Rodrigues\Documents\Visual Studio 2017\Projects\WalletManager\WalletManager\obj\Debug\AddSalaries.baml
 C:\Users\Goncalo Rodrigues\Documents\Visual Studio 2017\Projects\WalletManager\WalletManager\obj\Debug\AddWallet.baml
+C:\Users\Goncalo Rodrigues\Documents\Visual Studio 2017\Projects\WalletManager\WalletManager\obj\Debug\AddExpenseCategory.g.cs
+C:\Users\Goncalo Rodrigues\Documents\Visual Studio 2017\Projects\WalletManager\WalletManager\obj\Debug\AddExpenseCategory.baml
+C:\Users\Goncalo Rodrigues\Documents\Visual Studio 2017\Projects\WalletManager\WalletManager\obj\Debug\AddSalaryCategory.g.cs
+C:\Users\Goncalo Rodrigues\Documents\Visual Studio 2017\Projects\WalletManager\WalletManager\obj\Debug\AddSalaryCategory.baml
+C:\Users\Goncalo Rodrigues\Documents\Visual Studio 2017\Projects\WalletManager\WalletManager\obj\Debug\Account.g.cs
+C:\Users\Goncalo Rodrigues\Documents\Visual Studio 2017\Projects\WalletManager\WalletManager\obj\Debug\Account.baml
+C:\Users\Goncalo Rodrigues\Documents\Visual Studio 2017\Projects\WalletManager\WalletManager\obj\Debug\ChangeName.g.cs
+C:\Users\Goncalo Rodrigues\Documents\Visual Studio 2017\Projects\WalletManager\WalletManager\obj\Debug\ChangeName.baml

@@ -102,23 +102,251 @@ namespace WalletManager
         /// <summary>
         /// Add a wallet to user account.
         /// </summary>
-        /// <param name="name">Name of the wallet</param>
-        /// <param name="startingBalance">Balance when the account is created</param>
-        public void AddWallet(string name, decimal startingBalance)
+        /// <param name="_name">Name of the wallet</param>
+        /// <param name="_startingBalance">Balance when the account is created</param>
+        public void AddWallet(string _name, decimal _startingBalance)
         {
             // SQL command with paramenters
             string sql = "INSERT INTO Wallets(name, user_id, balance) VALUES(@name, @user_id, @balance)";
 
             // Parameters for SQL command
             List<SqlParameter> paramenters = new List<SqlParameter>
-                {
-                    new SqlParameter(){ ParameterName = "@name", SqlDbType = SqlDbType.VarChar, Value = name },
-                    new SqlParameter(){ ParameterName = "@user_id", SqlDbType = SqlDbType.Int, Value = id},
-                    new SqlParameter(){ ParameterName = "balance", SqlDbType = SqlDbType.Money, Value = startingBalance }
-                };
+            {
+                new SqlParameter(){ ParameterName = "@name", SqlDbType = SqlDbType.VarChar, Value = _name },
+                new SqlParameter(){ ParameterName = "@user_id", SqlDbType = SqlDbType.Int, Value = id},
+                new SqlParameter(){ ParameterName = "@balance", SqlDbType = SqlDbType.Money, Value = _startingBalance }
+            };
 
             // Execute command in DB
             DB.Instance.ExecSQL(sql, paramenters);
+        }
+        
+        /// <summary>
+        /// Add a expense to users account
+        /// </summary>
+        /// <param name="_value">Expense's value</param>
+        /// <param name="_date">Expense's date</param>
+        /// <param name="_wallet">Expense's wallet</param>
+        /// <param name="_category">Expense's category</param>
+        public bool AddExpense(decimal _value, DateTime _date, Wallet _wallet, ExpenseCategory _category)
+        {
+            // Get starting wallet balance
+            decimal balance = _wallet.GetBalance();
+
+            // Start SQL transaction
+            SqlTransaction transaction = DB.Instance.BegintTransaction();
+            
+            try
+            {
+                // -- Subtract value to wallet -- //
+                // SQL command with paramenters
+                string sql = "UPDATE Wallets SET balance = @balance WHERE id = @id";
+
+                // Parameters for SQL command
+                List<SqlParameter> parameters = new List<SqlParameter>
+                {
+                    new SqlParameter(){ ParameterName = "@balance", SqlDbType = SqlDbType.Money, Value = balance - _value},
+                    new SqlParameter(){ ParameterName = "@id", SqlDbType = SqlDbType.Int, Value = _wallet.id}
+                };
+
+                // Execute SQL command in DB
+                DB.Instance.ExecSQL(sql, parameters, transaction);
+
+                // -- Create transaction -- //
+                // SQL command with paramenters
+                sql = "INSERT INTO Transactions(value, date, wallet_id) VALUES(@value, @date, @wallet_id)";
+
+                // Paramerters for SQL command
+                parameters = new List<SqlParameter>
+                {
+                    new SqlParameter(){ ParameterName = "@value", SqlDbType = SqlDbType.Money, Value = -_value},
+                    new SqlParameter(){ ParameterName = "@date", SqlDbType = SqlDbType.Date, Value = _date},
+                    new SqlParameter(){ ParameterName = "@wallet_id", SqlDbType = SqlDbType.Int, Value = _wallet.id}
+                };
+
+                // Execute SQL command in DB
+                DB.Instance.ExecSQL(sql, parameters, transaction);
+
+                // -- Create expense -- //
+                // Get transaction id
+                sql = "SELECT MAX(id) FROM Transactions";
+
+                int transactionId = (int)DB.Instance.ExecQuery(sql, transaction).Rows[0][0];
+
+                // SQl command with parameters
+                sql = "INSERT INTO Expenses(category_id, transaction_id) VALUES(@category_id, @transaction_id)";
+
+                // Parameters for SQL command
+                parameters = new List<SqlParameter>()
+                {
+                    new SqlParameter(){ ParameterName = "@category_id", SqlDbType = SqlDbType.Int, Value = _category.id},
+                    new SqlParameter(){ ParameterName = "@transaction_id", SqlDbType = SqlDbType.Int, Value = transactionId}
+                };
+
+                // Execute SQL command in DB
+                DB.Instance.ExecSQL(sql, parameters, transaction);
+
+                // Commit transaction
+                transaction.Commit();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                // Rollback transaction
+                transaction.Rollback();
+
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Add a salary to users account
+        /// </summary>
+        /// <param name="_value">Expense's value</param>
+        /// <param name="_date">Expense's date</param>
+        /// <param name="_wallet">Expense's wallet</param>
+        /// <param name="_category">Expense's category</param>
+        public bool AddSalary(decimal _value, DateTime _date, Wallet _wallet, SalaryCategory _category)
+        {
+            // Get starting wallet balance
+            decimal balance = _wallet.GetBalance();
+
+            // Start SQL transaction
+            SqlTransaction transaction = DB.Instance.BegintTransaction();
+
+            try
+            {
+                // -- Add value to wallet -- //
+                // SQL command with paramenters
+                string sql = "UPDATE Wallets SET balance = @balance WHERE id = @id";
+
+                // Parameters for SQL command
+                List<SqlParameter> parameters = new List<SqlParameter>
+                {
+                    new SqlParameter(){ ParameterName = "@balance", SqlDbType = SqlDbType.Money, Value = balance + _value},
+                    new SqlParameter(){ ParameterName = "@id", SqlDbType = SqlDbType.Int, Value = _wallet.id}
+                };
+
+                // Execute SQL command in DB
+                DB.Instance.ExecSQL(sql, parameters, transaction);
+
+                // -- Create transaction -- //
+                // SQL command with paramenters
+                sql = "INSERT INTO Transactions(value, date, wallet_id) VALUES(@value, @date, @wallet_id)";
+
+                // Paramerters for SQL command
+                parameters = new List<SqlParameter>
+                {
+                    new SqlParameter(){ ParameterName = "@value", SqlDbType = SqlDbType.Money, Value = _value},
+                    new SqlParameter(){ ParameterName = "@date", SqlDbType = SqlDbType.Date, Value = _date},
+                    new SqlParameter(){ ParameterName = "@wallet_id", SqlDbType = SqlDbType.Int, Value = _wallet.id}
+                };
+
+                // Execute SQL command in DB
+                DB.Instance.ExecSQL(sql, parameters, transaction);
+
+                // -- Create salary -- // 
+                // Get transaction id
+                sql = "SELECT MAX(id) FROM Transactions";
+
+                int transactionId = (int)DB.Instance.ExecQuery(sql, transaction).Rows[0][0];
+
+                // SQl command with parameters
+                sql = "INSERT INTO Salaries(category_id, transaction_id) VALUES(@category_id, @transaction_id)";
+
+                // Parameters for SQL command
+                parameters = new List<SqlParameter>()
+                {
+                    new SqlParameter(){ ParameterName = "@category_id", SqlDbType = SqlDbType.Int, Value = _category.id},
+                    new SqlParameter(){ ParameterName = "@transaction_id", SqlDbType = SqlDbType.Int, Value = transactionId}
+                };
+
+                // Execute SQL command in DB
+                DB.Instance.ExecSQL(sql, parameters, transaction);
+
+                // Commit transaction
+                transaction.Commit();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                // Rollback transaction
+                transaction.Rollback();
+
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Add a Expense Category to user account.
+        /// </summary>
+        /// <param name="_name">Category name</param>
+        public void AddExpenseCategory(string _name)
+        {
+            // SQL Command with paramenters
+            string sql = "INSERT INTO Expenses_Categories(name, user_id) VAlUES(@name, @user_id)";
+
+            // Paramenters for SQL command
+            List<SqlParameter> parameters = new List<SqlParameter>()
+            {
+                new SqlParameter(){ParameterName = "@name", SqlDbType = SqlDbType.VarChar, Value = _name},
+                new SqlParameter(){ ParameterName = "@user_id", SqlDbType = SqlDbType.Int, Value = id},
+            };
+
+            // Execute command in DB
+            DB.Instance.ExecSQL(sql, parameters);
+        }
+
+        /// <summary>
+        /// Add a Salary Category to user account.
+        /// </summary>
+        /// <param name="_name">Categoty name</param>
+        public void AddSalaryCategory(string _name)
+        {
+            // SQL Command with paramenters
+            string sql = "INSERT INTO Salaries_Categories(name, user_id) VAlUES(@name, @user_id)";
+
+            // Paramenters for SQL command
+            List<SqlParameter> parameters = new List<SqlParameter>()
+            {
+                new SqlParameter(){ParameterName = "@name", SqlDbType = SqlDbType.VarChar, Value = _name},
+                new SqlParameter(){ ParameterName = "@user_id", SqlDbType = SqlDbType.Int, Value = id},
+            };
+
+            // Execute command in DB
+            DB.Instance.ExecSQL(sql, parameters);
+        }
+
+        /// <summary>
+        /// Change user's name
+        /// </summary>
+        /// <param name="_newName">New name</param>
+        /// <param name="_password">User's password</param>
+        /// <returns></returns>
+        public bool ChangeName(string _newName, string _password)
+        {
+            if (_password != password) return false;
+
+            // SQL command
+            string sql = "UPDATE Users SET name = @name WHERE id = @id";
+
+            // Paramenters for SQL command
+            List<SqlParameter> parameters = new List<SqlParameter>()
+            {
+                new SqlParameter(){ ParameterName = "@name", SqlDbType = SqlDbType.VarChar, Value = _newName},
+                new SqlParameter(){ ParameterName = "@id", SqlDbType = SqlDbType.Int, Value = id }
+            };
+
+            // Execute command in DB
+            DB.Instance.ExecSQL(sql, parameters);
+
+            // Update session
+            Session.Instance.LogOut();
+            Session.Instance.Attempt(email, password);
+
+            return true;
         }
 
         /// <summary>

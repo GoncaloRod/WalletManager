@@ -1,0 +1,41 @@
+﻿<Window x:Class="WalletManager.AddExpenseCategory"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:WalletManager"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStartupLocation="CenterScreen"
+        Title="Add Expense Category" Height="180" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="225"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Name -->
+        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+            <materialDesign:PackIcon Kind="FormatListBulleted" Foreground="{Binding ElementName=txtName, Path=BorderBrush}" Height="30" Width="20"/>
+            <TextBox x:Name="txtName" materialDesign:HintAssist.Hint="Name" Width="200" Margin="5,0,0,0"/>
+        </StackPanel>
+
+        <!-- Add Button -->
+        <Button x:Name="btnAdd" Grid.Column="1" Grid.Row="3" Content="Add" Click="btnAddClick"/>
+    </Grid>
+</Window>
