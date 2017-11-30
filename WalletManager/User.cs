@@ -100,6 +100,84 @@ namespace WalletManager
         }
 
         /// <summary>
+        /// Get all user's walletes
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetAllWallets()
+        {
+            // SQL command
+            string sql = $"SELECT name AS 'Wallet Name', CONVERT(VARCHAR(100), CONVERT(DECIMAL(20, 2), balance)) + ' ' + (SELECT symbol FROM Currencies WHERE id = {currency_id}) AS 'Wallet Balance' FROM Wallets WHERE user_id = {id}";
+
+            // Execute command in DB
+            return DB.Instance.ExecQuery(sql);
+        }
+
+        /// <summary>
+        /// Get all user's transactions
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetAllTransactions()
+        {
+            // SQL commdand
+            string sql = $"SELECT Wallets.name AS 'Wallet', CONVERT(VARCHAR(100), CONVERT(DECIMAL(20, 2), value)) + ' ' + (SELECT symbol FROM Currencies WHERE id = {currency_id}) AS 'Value', CONVERT(VARCHAR(100), DATEPART(YYYY, Transactions.date)) + '/' + CONVERT(VARCHAR(100), DATEPART(MM, Transactions.date)) + '/' + CONVERT(VARCHAR(100), DATEPART(DD, Transactions.date)) AS 'Date' FROM Wallets, Transactions WHERE Wallets.user_id = {id} AND Transactions.wallet_id = Wallets.id";
+
+            // Execute command in DB
+            return DB.Instance.ExecQuery(sql);
+        }
+
+        /// <summary>
+        /// Get all user's expensies
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetAllExpenses()
+        {
+            // SQL commdand
+            string sql = $"SELECT Wallets.name AS 'Wallet', CONVERT(VARCHAR(100), CONVERT(DECIMAL(20, 2), value)) + ' ' + (SELECT symbol FROM Currencies WHERE id = {currency_id}) AS 'Value', CONVERT(VARCHAR(100), DATEPART(YYYY, Transactions.date)) + '/' + CONVERT(VARCHAR(100), DATEPART(MM, Transactions.date)) + '/' + CONVERT(VARCHAR(100), DATEPART(DD, Transactions.date)) AS 'Date', Expenses_Categories.name AS 'Category' FROM Wallets, Transactions, Expenses_Categories, Expenses WHERE Wallets.user_id = {id} AND Transactions.wallet_id = Wallets.id AND Expenses.transaction_id = Transactions.id AND Expenses.category_id = Expenses_Categories.id";
+
+            // Execute command in DB
+            return DB.Instance.ExecQuery(sql);
+        }
+
+        /// <summary>
+        /// Get all user's expensies
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetAllSalaries()
+        {
+            // SQL commdand
+            string sql = $"SELECT Wallets.name AS 'Wallet', CONVERT(VARCHAR(100), CONVERT(DECIMAL(20, 2), value)) + ' ' + (SELECT symbol FROM Currencies WHERE id = {currency_id}) AS 'Value', CONVERT(VARCHAR(100), DATEPART(YYYY, Transactions.date)) + '/' + CONVERT(VARCHAR(100), DATEPART(MM, Transactions.date)) + '/' + CONVERT(VARCHAR(100), DATEPART(DD, Transactions.date)) AS 'Date', Salaries_Categories.name AS 'Category' FROM Wallets, Transactions, Salaries_Categories, Salaries WHERE Wallets.user_id = {id} AND Transactions.wallet_id = Wallets.id AND Salaries.transaction_id = Transactions.id AND Salaries.category_id = Salaries_Categories.id";
+
+            // Execute command in DB
+            return DB.Instance.ExecQuery(sql);
+        }
+
+        /// <summary>
+        /// Get all user's expenses categires
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetAllExpensesCategories()
+        {
+            // SQL command
+            string sql = $"SELECT name AS 'Categorie Name' FROM Expenses_Categories WHERE user_id = {id}";
+
+            // Execute command in DB
+            return DB.Instance.ExecQuery(sql);
+        }
+
+        /// <summary>
+        /// Get all user's salaries categires
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetAllSalariesCategories()
+        {
+            // SQL command
+            string sql = $"SELECT name AS 'Categorie Name' FROM Salaries_Categories WHERE user_id = {id}";
+
+            // Execute command in DB
+            return DB.Instance.ExecQuery(sql);
+        }
+
+        /// <summary>
         /// Add a wallet to user account.
         /// </summary>
         /// <param name="_name">Name of the wallet</param>

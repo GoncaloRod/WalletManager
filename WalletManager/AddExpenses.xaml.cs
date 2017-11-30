@@ -69,7 +69,7 @@ namespace WalletManager
 
             // Variables to send to class
             decimal value = Convert.ToDecimal(txtValue.Text);
-            DateTime date = new DateTime(dtpDate.DisplayDate.Year, dtpDate.DisplayDate.Month, dtpDate.DisplayDate.Day);
+            DateTime date = new DateTime(dtpDate.SelectedDate.Value.Year, dtpDate.SelectedDate.Value.Month, dtpDate.SelectedDate.Value.Day);
             Wallet wallet = (Wallet)cmbWallet.SelectedItem;
             ExpenseCategory category = (ExpenseCategory)cmbCategory.SelectedItem;
 

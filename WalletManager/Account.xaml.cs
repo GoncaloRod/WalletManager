@@ -42,7 +42,13 @@ namespace WalletManager
 
         private void UpdateForm()
         {
+            // Update text blocks
             tbName.Text = Session.Instance.GetUser().name;
+
+            // Update DataGrids
+            dgWallets.ItemsSource = Session.Instance.GetUser().GetAllWallets().DefaultView;
+            dgExpensiesCategories.ItemsSource = Session.Instance.GetUser().GetAllExpensesCategories().DefaultView;
+            dgSalariesCategories.ItemsSource = Session.Instance.GetUser().GetAllSalariesCategories().DefaultView;
         }
     }
 }

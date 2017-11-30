@@ -61,8 +61,14 @@ namespace WalletManager
 
         private void UpdateForm()
         {
+            // Update text blocks
             tbName.Text = Session.Instance.GetUser().name;
             tbBalance.Text = $"Total Balance: {Session.Instance.GetUser().TotalBalance():F2} {Session.Instance.GetUser().GetUserCurrencySymbol()}";
+
+            // Update data grids
+            dgTransctions.ItemsSource = Session.Instance.GetUser().GetAllTransactions().DefaultView;
+            dgExpenses.ItemsSource = Session.Instance.GetUser().GetAllExpenses().DefaultView;
+            dgSalaries.ItemsSource = Session.Instance.GetUser().GetAllSalaries().DefaultView;
         }
     }
 }

@@ -14,14 +14,16 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStartupLocation="CenterScreen"
-        Title="Account" Height="400" Width="800">
+        Title="Account" Height="400" Width="850">
     <Grid Margin="15,15,15,15">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="50"/>
-            <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -30,7 +32,7 @@
         </Grid.RowDefinitions>
 
         <!-- Options Popup Box -->
-        <materialDesign:PopupBox Grid.Column="4" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+        <materialDesign:PopupBox Grid.Column="6" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
             <StackPanel>
                 <Button x:Name="btnChangeName" Click="btnChangeNameClick">Change Name</Button>
             </StackPanel>
@@ -39,10 +41,19 @@
         <!-- User's name -->
         <TextBlock x:Name="tbName" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" VerticalAlignment="Center" Style="{StaticResource MaterialDesignDisplay2TextBlock}" Text="Name"/>
         
-        <!-- Wallets -->
-        
-        
-        <!-- Categories -->
-        
+        <!-- Wallets table name -->
+        <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource MaterialDesignSubheadingTextBlock}">Wallets</TextBlock>
+        <!-- Wallets DataGrid -->
+        <DataGrid x:Name="dgWallets" Grid.Column="1" Grid.Row="2" CanUserAddRows="False" CanUserSortColumns="True"/>
+
+        <!-- Expensies categories table name -->
+        <TextBlock Grid.Column="3" Grid.Row="1" Style="{StaticResource MaterialDesignSubheadingTextBlock}">Expensies Categories</TextBlock>
+        <!-- Expensies Categories DataGrid -->
+        <DataGrid x:Name="dgExpensiesCategories" Grid.Column="3" Grid.Row="2" CanUserAddRows="False" CanUserSortColumns="True"/>
+
+        <!-- Expensies categories table name -->
+        <TextBlock Grid.Column="5" Grid.Row="1" Style="{StaticResource MaterialDesignSubheadingTextBlock}">Salaries Categories</TextBlock>
+        <!-- Salaries Categories DataGrid -->
+        <DataGrid x:Name="dgSalariesCategories" Grid.Column="5" Grid.Row="2" CanUserAddRows="False" CanUserSortColumns="True"/>
     </Grid>
 </Window>
