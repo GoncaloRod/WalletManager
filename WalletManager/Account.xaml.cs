@@ -40,6 +40,12 @@ namespace WalletManager
             UpdateForm();
         }
 
+        private void btnDeleteAccountClick(object sender, RoutedEventArgs e)
+        {
+            // Delete user account
+            Session.Instance.GetUser().DeleteAccount();
+        }
+
         private void UpdateForm()
         {
             // Update text blocks

@@ -100,6 +100,40 @@ namespace WalletManager
         }
 
         /// <summary>
+        /// Delete user account.
+        /// </summary>
+        /// <returns>True if password is correct. False if password is incorrect.</returns>
+        public bool DeleteAccount(string _password)
+        {
+            if (_password != password) return false;
+
+            // Get wallets
+            string sql = $"SELECT id FROM Wallets WHERE user_id = {id}";
+            DataTable wallets = DB.Instance.ExecQuery(sql);
+
+            // Get tasactions based on wallets
+            for (int i = 0; i < length; i++)
+            {
+
+            }
+
+            // Delete expenses or salaries based on transactions
+
+            // Delete transactions
+
+            // Delete expenses categories
+
+            // Delete salaries categories
+
+            // Delete walletes
+
+            // Delete user
+
+            return true;
+        }
+
+
+        /// <summary>
         /// Get all user's walletes
         /// </summary>
         /// <returns></returns>

@@ -35,6 +35,8 @@
         <materialDesign:PopupBox Grid.Column="6" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
             <StackPanel>
                 <Button x:Name="btnChangeName" Click="btnChangeNameClick">Change Name</Button>
+                <Separator/>
+                <Button x:Name="btnDeleteAccount" Click="btnDeleteAccountClick">Celete Account</Button>
             </StackPanel>
         </materialDesign:PopupBox>
 
@@ -44,16 +46,16 @@
         <!-- Wallets table name -->
         <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource MaterialDesignSubheadingTextBlock}">Wallets</TextBlock>
         <!-- Wallets DataGrid -->
-        <DataGrid x:Name="dgWallets" Grid.Column="1" Grid.Row="2" CanUserAddRows="False" CanUserSortColumns="True"/>
+        <DataGrid x:Name="dgWallets" Grid.Column="1" Grid.Row="2" CanUserAddRows="False" CanUserSortColumns="True" IsReadOnly="True"/>
 
         <!-- Expensies categories table name -->
         <TextBlock Grid.Column="3" Grid.Row="1" Style="{StaticResource MaterialDesignSubheadingTextBlock}">Expensies Categories</TextBlock>
         <!-- Expensies Categories DataGrid -->
-        <DataGrid x:Name="dgExpensiesCategories" Grid.Column="3" Grid.Row="2" CanUserAddRows="False" CanUserSortColumns="True"/>
+        <DataGrid x:Name="dgExpensiesCategories" Grid.Column="3" Grid.Row="2" CanUserAddRows="False" CanUserSortColumns="True" IsReadOnly="True"/>
 
         <!-- Expensies categories table name -->
         <TextBlock Grid.Column="5" Grid.Row="1" Style="{StaticResource MaterialDesignSubheadingTextBlock}">Salaries Categories</TextBlock>
         <!-- Salaries Categories DataGrid -->
-        <DataGrid x:Name="dgSalariesCategories" Grid.Column="5" Grid.Row="2" CanUserAddRows="False" CanUserSortColumns="True"/>
+        <DataGrid x:Name="dgSalariesCategories" Grid.Column="5" Grid.Row="2" CanUserAddRows="False" CanUserSortColumns="True" IsReadOnly="True"/>
     </Grid>
 </Window>
