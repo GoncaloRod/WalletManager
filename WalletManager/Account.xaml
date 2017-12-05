@@ -36,7 +36,7 @@
             <StackPanel>
                 <Button x:Name="btnChangeName" Click="btnChangeNameClick">Change Name</Button>
                 <Separator/>
-                <Button x:Name="btnDeleteAccount" Click="btnDeleteAccountClick">Celete Account</Button>
+                <Button x:Name="btnDeleteAccount" Click="btnDeleteAccountClick">Delete Account</Button>
             </StackPanel>
         </materialDesign:PopupBox>
 

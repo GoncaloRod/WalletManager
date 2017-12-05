@@ -82,6 +82,15 @@ namespace WalletManager
             command = null;
         }
 
+        public void ExecSQL(string sql, SqlTransaction transaction)
+        {
+            SqlCommand command = new SqlCommand(sql, dbConnection);
+            command.Transaction = transaction;
+            command.ExecuteNonQuery();
+            command.Dispose();
+            command = null;
+        }
+
         public void ExecSQL(string sql, List<SqlParameter> parameters)
         {
             SqlCommand command = new SqlCommand(sql, dbConnection);

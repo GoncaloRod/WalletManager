@@ -91,6 +91,9 @@
       <DependentUpon>ChangeName.xaml</DependentUpon>
     </Compile>
     <Compile Include="Currency.cs" />
+    <Compile Include="EnterPasswordDeleteAccount.xaml.cs">
+      <DependentUpon>EnterPasswordDeleteAccount.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExpenseCategory.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -164,6 +167,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ChangeName.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EnterPasswordDeleteAccount.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

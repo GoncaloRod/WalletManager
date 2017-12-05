@@ -42,8 +42,13 @@ namespace WalletManager
 
         private void btnDeleteAccountClick(object sender, RoutedEventArgs e)
         {
-            // Delete user account
-            Session.Instance.GetUser().DeleteAccount();
+            // Show confirmation message
+            if (MessageBox.Show("Are ou sure you want to delete our account?", "Confirm Action", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                // Show enter password window
+                EnterPasswordDeleteAccount enterPassword = new EnterPasswordDeleteAccount();
+                enterPassword.ShowDialog();
+            }
         }
 
         private void UpdateForm()

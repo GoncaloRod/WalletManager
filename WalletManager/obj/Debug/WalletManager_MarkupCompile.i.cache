@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Goncalo Rodrigues\Documents\Visual Studio 2017\Projects\WalletManager\WalletManager\App.xaml
-111204297869
+12930770507
 1-382356162
-26255572118
+271262297844
 17-1533013221
-Account.xaml;AddSalaryCategory.xaml;AddExpenseCategory.xaml;AddExpenses.xaml;AddMenu.xaml;AddSalaries.xaml;AddWallet.xaml;ChangeName.xaml;Login.xaml;MainWindow.xaml;Register.xaml;
+Account.xaml;AddSalaryCategory.xaml;AddExpenseCategory.xaml;AddExpenses.xaml;AddMenu.xaml;AddSalaries.xaml;AddWallet.xaml;ChangeName.xaml;EnterPasswordDeleteAccount.xaml;Login.xaml;MainWindow.xaml;Register.xaml;
 
 True
 

@@ -102,3 +102,5 @@ D:\PSI\M15\WalletManager\WalletManager\obj\Debug\AddSalaries.baml
 D:\PSI\M15\WalletManager\WalletManager\obj\Debug\AddWallet.baml
 D:\PSI\M15\WalletManager\WalletManager\obj\Debug\ChangeName.baml
 D:\PSI\M15\WalletManager\WalletManager\obj\Debug\MainWindow.baml
+C:\Users\Goncalo Rodrigues\Documents\Visual Studio 2017\Projects\WalletManager\WalletManager\obj\Debug\EnterPasswordDeleteAccount.g.cs
+C:\Users\Goncalo Rodrigues\Documents\Visual Studio 2017\Projects\WalletManager\WalletManager\obj\Debug\EnterPasswordDeleteAccount.baml

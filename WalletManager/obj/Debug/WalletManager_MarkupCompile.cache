@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\PSI\M15\WalletManager\WalletManager\obj\Debug\
+C:\Users\Goncalo Rodrigues\Documents\Visual Studio 2017\Projects\WalletManager\WalletManager\obj\Debug\
 WalletManager
 none
 false
 DEBUG;TRACE
-D:\PSI\M15\WalletManager\WalletManager\App.xaml
-111204297869
+C:\Users\Goncalo Rodrigues\Documents\Visual Studio 2017\Projects\WalletManager\WalletManager\App.xaml
+12930770507
 1-382356162
-22-250615124
-17-264885824
-Account.xaml;AddSalaryCategory.xaml;AddExpenseCategory.xaml;AddExpenses.xaml;AddMenu.xaml;AddSalaries.xaml;AddWallet.xaml;ChangeName.xaml;Login.xaml;MainWindow.xaml;Register.xaml;
+23756110602
+17-1533013221
+Account.xaml;AddSalaryCategory.xaml;AddExpenseCategory.xaml;AddExpenses.xaml;AddMenu.xaml;AddSalaries.xaml;AddWallet.xaml;ChangeName.xaml;EnterPasswordDeleteAccount.xaml;Login.xaml;MainWindow.xaml;Register.xaml;
 
-True
+False
 

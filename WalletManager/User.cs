@@ -107,46 +107,63 @@ namespace WalletManager
         {
             if (_password != password) return false;
 
-            // Get wallets
-            string sql = $"SELECT id FROM Wallets WHERE user_id = {id}";
-            DataTable wallets = DB.Instance.ExecQuery(sql);
+            // Begin transaction
+            SqlTransaction transaction = DB.Instance.BegintTransaction();
 
-            // Get tasactions based on wallets
-            for (int i = 0; i < wallets.Rows.Count; i++)
+            try
             {
-                sql = $"SELECT id FROM Transaction WHERE wallet_id = {wallets.Rows[0][0]}";
-                DataTable transactions = DB.Instance.ExecQuery(sql);
+                // Get wallets
+                string sql = $"SELECT id FROM Wallets WHERE user_id = {id}";
+                DataTable wallets = DB.Instance.ExecQuery(sql, transaction);
 
-                // Delete expenses or salaries based on transactions
-                for (int a = 0; a < transactions.Rows.Count; a++)
+                // Get tasactions based on wallets
+                for (int i = 0; i < wallets.Rows.Count; i++)
                 {
-                    sql = $"DELETE FROM Expenses WHERE transaction_id = {transactions.Rows[i][0]}";
-                    DB.Instance.ExecSQL(sql);
+                    sql = $"SELECT id FROM Transactions WHERE wallet_id = {wallets.Rows[0][0]}";
+                    DataTable transactions = DB.Instance.ExecQuery(sql, transaction);
 
-                    sql = $"DELETE FROM Salaries WHERE transaction_id = {transactions.Rows[i][0]}";
-                    DB.Instance.ExecSQL(sql);
+                    // Delete expenses or salaries based on transactions
+                    for (int a = 0; a < transactions.Rows.Count; a++)
+                    {
+                        sql = $"DELETE FROM Expenses WHERE transaction_id = {transactions.Rows[a][0]}";
+                        DB.Instance.ExecSQL(sql, transaction);
+
+                        sql = $"DELETE FROM Salaries WHERE transaction_id = {transactions.Rows[a][0]}";
+                        DB.Instance.ExecSQL(sql, transaction);
+                    }
                 }
 
+                // Delete expenses categories
+                sql = $"DELETE FROM Expenses_Categories WHERE user_id = {id}";
+                DB.Instance.ExecSQL(sql, transaction);
+
+                // Delete salaries categories
+                sql = $"DELETE FROM Salaries_Categories WHERE user_id = {id}";
+                DB.Instance.ExecSQL(sql, transaction);
+
                 // Delete transactions based on wallets
-                sql = $"DELETE FROM Transaction WHERE wallet_id = {wallets.Rows[i][0]}";
-                DB.Instance.ExecSQL(sql);
+                for (int i = 0; i < wallets.Rows.Count; i++)
+                {
+                    sql = $"DELETE FROM Transactions WHERE wallet_id = {wallets.Rows[i][0]}";
+                    DB.Instance.ExecSQL(sql, transaction);
+                }
+
+                // Delete walletes
+                sql = $"DELETE FROM Wallets WHERE user_id = {id}";
+                DB.Instance.ExecSQL(sql, transaction);
+
+                // Delete user
+                sql = $"DELETE FROM Users WHERE id = {id}";
+                DB.Instance.ExecSQL(sql, transaction);
+            }
+            catch (Exception)
+            {
+                // Rollback transaction
+                transaction.Rollback();
             }
 
-            // Delete walletes
-            sql = $"DELETE FROM Wallets WHERE user_id = {id}";
-            DB.Instance.ExecSQL(sql);
-
-            // Delete expenses categories
-            sql = $"DELETE FROM Expenses_Categories WHERE user_id = {id}";
-            DB.Instance.ExecSQL(sql);
-
-            // Delete salaries 
-            sql = $"DELETE FROM Salaries_Categories WHERE user_id = {id}";
-            DB.Instance.ExecSQL(sql);
-
-            // Delete user
-            sql = $"DELETE FROM Users WHERE id = {id}";
-            DB.Instance.ExecSQL(sql);
+            // Commit transaction
+            transaction.Commit();
 
             return true;
         }
