@@ -112,22 +112,41 @@ namespace WalletManager
             DataTable wallets = DB.Instance.ExecQuery(sql);
 
             // Get tasactions based on wallets
-            for (int i = 0; i < length; i++)
+            for (int i = 0; i < wallets.Rows.Count; i++)
             {
+                sql = $"SELECT id FROM Transaction WHERE wallet_id = {wallets.Rows[0][0]}";
+                DataTable transactions = DB.Instance.ExecQuery(sql);
 
+                // Delete expenses or salaries based on transactions
+                for (int a = 0; a < transactions.Rows.Count; a++)
+                {
+                    sql = $"DELETE FROM Expenses WHERE transaction_id = {transactions.Rows[i][0]}";
+                    DB.Instance.ExecSQL(sql);
+
+                    sql = $"DELETE FROM Salaries WHERE transaction_id = {transactions.Rows[i][0]}";
+                    DB.Instance.ExecSQL(sql);
+                }
+
+                // Delete transactions based on wallets
+                sql = $"DELETE FROM Transaction WHERE wallet_id = {wallets.Rows[i][0]}";
+                DB.Instance.ExecSQL(sql);
             }
 
-            // Delete expenses or salaries based on transactions
-
-            // Delete transactions
+            // Delete walletes
+            sql = $"DELETE FROM Wallets WHERE user_id = {id}";
+            DB.Instance.ExecSQL(sql);
 
             // Delete expenses categories
+            sql = $"DELETE FROM Expenses_Categories WHERE user_id = {id}";
+            DB.Instance.ExecSQL(sql);
 
-            // Delete salaries categories
-
-            // Delete walletes
+            // Delete salaries 
+            sql = $"DELETE FROM Salaries_Categories WHERE user_id = {id}";
+            DB.Instance.ExecSQL(sql);
 
             // Delete user
+            sql = $"DELETE FROM Users WHERE id = {id}";
+            DB.Instance.ExecSQL(sql);
 
             return true;
         }
