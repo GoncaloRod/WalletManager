@@ -59,6 +59,10 @@ CREATE TABLE Expenses (
 	PRIMARY KEY ([id])
 )
 
+/* Create indexes */
+CREATE INDEX Emails
+ON Users([email])
+
 /* Populate some tables */
 INSERT INTO Currencies([code], [symbol]) VALUES('USD', '$')
 
