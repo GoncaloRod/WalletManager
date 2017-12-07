@@ -10,7 +10,6 @@ D:\PSI\M15\WalletManager\WalletManager\obj\Debug\Login.baml
 D:\PSI\M15\WalletManager\WalletManager\obj\Debug\WalletManager.g.resources
 D:\PSI\M15\WalletManager\WalletManager\obj\Debug\WalletManager.Properties.Resources.resources
 D:\PSI\M15\WalletManager\WalletManager\obj\Debug\WalletManager.csproj.GenerateResource.Cache
-D:\PSI\M15\WalletManager\WalletManager\obj\Debug\WalletManager.csproj.CoreCompileInputs.cache
 D:\PSI\M15\WalletManager\WalletManager\obj\Debug\WalletManager.exe
 D:\PSI\M15\WalletManager\WalletManager\obj\Debug\WalletManager.pdb
 H:\PSI\M15\WalletManager\WalletManager\bin\Debug\WalletManager.exe.config
@@ -104,3 +103,6 @@ D:\PSI\M15\WalletManager\WalletManager\obj\Debug\ChangeName.baml
 D:\PSI\M15\WalletManager\WalletManager\obj\Debug\MainWindow.baml
 C:\Users\Goncalo Rodrigues\Documents\Visual Studio 2017\Projects\WalletManager\WalletManager\obj\Debug\EnterPasswordDeleteAccount.g.cs
 C:\Users\Goncalo Rodrigues\Documents\Visual Studio 2017\Projects\WalletManager\WalletManager\obj\Debug\EnterPasswordDeleteAccount.baml
+D:\PSI\M15\WalletManager\WalletManager\obj\Debug\EnterPasswordDeleteAccount.g.cs
+D:\PSI\M15\WalletManager\WalletManager\obj\Debug\EnterPasswordDeleteAccount.baml
+D:\PSI\M15\WalletManager\WalletManager\obj\Debug\WalletManager.csproj.CoreCompileInputs.cache
