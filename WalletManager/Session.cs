@@ -29,7 +29,7 @@ namespace WalletManager
         public bool Attempt(string email, string password)
         {
             // SQL command with parameters
-            string sql = "SELECT * FROM Users WHERE email = @email AND password = @password";
+            string sql = "SELECT * FROM Users WHERE email LIKE @email AND password LIKE @password";
             // Parameters for SQL command
             List<SqlParameter> parameters = new List<SqlParameter>
             {
